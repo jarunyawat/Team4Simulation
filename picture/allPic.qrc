@@ -1,0 +1,19 @@
+<RCC>
+  <qresource prefix="bg">
+    <file>Add_ball_Setting_png.png</file>
+    <file>Add_ball_Setting_purebackground.png</file>
+    <file>MainWinBG.png</file>
+    <file>trajectory_window.png</file>
+  </qresource>
+  <qresource prefix="btn">
+    <file>Ok_Button100_png.png</file>
+    <file>cancel_Button90_png.png</file>
+    <file>cancel_Button100_png.png</file>
+    <file>Choose_Button90_png.png</file>
+    <file>Choose_Button100_png.png</file>
+    <file>Ok_Button90_png.png</file>
+  </qresource>
+  <qresource prefix="logo">
+    <file>Logo.png</file>
+  </qresource>
+</RCC>
