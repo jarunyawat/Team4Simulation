@@ -343,7 +343,39 @@ class AddBallWindow(QMainWindow):
                                       "QErrorMessage QCheckBox { color: #85e1d3 }"
                                       "QErrorMessage QTextEdit { background-color: #121824; color: #85e1d3 }"
                                        )
-
+        
+       self.error_msgChooseEndPoint.setStyleSheet("QErrorMessage{\n"
+                                         "background-color: #121824;\n"
+                                         "}\n"
+                                       "QPushButton{\n"
+                                       "font: 18pt \"Eras Demi ITC\";\n"
+                                       "background:transparent;\n"
+                                       "background-color: #121824;\n"
+                                       "color: #85e1d3;\n"
+                                       "border-style: solid;\n"
+                                       "border-width: 2px;\n"
+                                       "border-radius: 10px;\n"
+                                       "border-color: rgb(255, 0, 0);\n"
+                                       "font: bold 16px;\n"
+                                       "padding: 6px;\n"
+                                       "}\n"
+                                       "QPushButton:hover{\n"
+                                       "background-color: #192730;\n"
+                                       "}\n"
+                                       "\n"
+                                       "QPushButton:pressed{\n"
+                                       "background-color: #121824;\n"
+                                       "}"
+                                       "QPushButton:disabled{\n"
+                                       "border-style: double;\n"
+                                       "background-color: #121824;\n"
+                                       "color: #ff0000;\n"
+                                       "}\n"
+                                       "\n"
+                                      "QErrorMessage QCheckBox { color: #85e1d3 }"
+                                      "QErrorMessage QTextEdit { background-color: #121824; color: #85e1d3 }"
+                                       )
+    
         self.lineEdit_spring_k.setText(str(self.ball.springK))
         self.lineEdit_spring_x.setText(str(self.ball.springX))
         self.lineEdit_origin_x.setText(str(self.ball.positionX))
