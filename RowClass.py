@@ -24,18 +24,18 @@ class RowB(QTableWidget):
         self.PositionBox = PositonBoxB(self)
         self.VelocityBox = VelocityBoxB(self)
         self.CheckBox = CheckBoxB(self)
-        self._updataVisible()
+        self.__updataVisible()
 
-        self.sigUpdateReceiver.connect(self._updataVisible)
-        self.sigrowColorChange.connect(self._updateColorDisplay)
+        self.sigUpdateReceiver.connect(self.__updataVisible)
+        self.sigrowColorChange.connect(self.__updateColorDisplay)
         self.sigShowWindow.connect(self.showWindow)
 
         self.addWin.pushButton_ok.clicked.connect(lambda: self.table.createRow(self))
 
-    def _updataVisible(self):
+    def __updataVisible(self):
         self.ball.visible = self.CheckBox.checkOrNot
 
-    def _updateColorDisplay(self):
+    def __updateColorDisplay(self):
         self.ColorBox.setStyleSheet("background-color: {0}".format(self.addWin.ball.color))
 
     def showWindow(self):

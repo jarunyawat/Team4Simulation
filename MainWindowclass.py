@@ -1,7 +1,6 @@
 import sys
 sys.path.insert(1, 'picture')
-import allPic
-
+import picture.allPic
 from PyQt5 import QtGui
 from PyQt5.QtCore import Qt
 from TableWidgetClass import *
@@ -15,7 +14,7 @@ class Team4SIM(QMainWindow):
 
     def __init__(self, *args):
         super(Team4SIM, self).__init__(*args)
-        self._setupUi()
+        self.__setupUi()
         self.ballTable = TableA()
         self.ballTable.display = self.displayScreen
         self.rowBucket = self.ballTable.rowBallBucket
@@ -35,7 +34,7 @@ class Team4SIM(QMainWindow):
         self.btn_start.clicked.connect(self.startAnimation)
         self.btn_start.clicked.connect(self.setAnimationTimeText)
 
-    def _setupUi(self):
+    def __setupUi(self):
         self.resize(1500, 1000)
         self.setMinimumSize(QtCore.QSize(1500, 1000))
         self.setMaximumSize(QtCore.QSize(1500, 1000))
@@ -121,12 +120,12 @@ class Team4SIM(QMainWindow):
         self.statusbar.setObjectName("statusbar")
         self.setStatusBar(self.statusbar)
 
-        self._retranslateUi()
+        self.__resetDefaultUi()
         self.scrollBar_time.valueChanged['int'].connect(self.setRowWidgetText)
         self.scrollBar_time.valueChanged['int'].connect(self.rewatchAnimation)
         QtCore.QMetaObject.connectSlotsByName(self)
 
-    def _retranslateUi(self):
+    def __resetDefaultUi(self):
         _translate = QtCore.QCoreApplication.translate
         self.setWindowTitle(_translate("MainProgram", "TEAM 4 Simulation program"))
         self.btn_add.setText(_translate("MainProgram", "Add"))

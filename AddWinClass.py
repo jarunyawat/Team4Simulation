@@ -1,7 +1,7 @@
 from os import error
 import sys , math
+import picture.allPic
 sys.path.insert(1, 'picture')
-import allPic
 
 from PyQt5.QtWidgets import QMainWindow, QErrorMessage, QMessageBox
 from PyQt5 import QtCore, QtGui, QtWidgets
@@ -19,7 +19,7 @@ class AddBallWindow(QMainWindow):
         self.ball = BallA()
         self.color = self.ball.color
         self.allowToCreate = False
-        self._setupUi()
+        self.__setupUi()
 
         # Button
         self.pushButton_cancel.clicked.connect(self.close)
@@ -32,13 +32,13 @@ class AddBallWindow(QMainWindow):
         self.pushButton_choose_springX.clicked.connect(self.calEndpoint)
 
         # Color
-        self.pushButton_color.clicked.connect(self._colorChange)
+        self.pushButton_color.clicked.connect(self.colorChange)
 
-    def _setupUi(self):
+    def __setupUi(self):
         self.setWindowTitle("Add Ball Window")
         self.resize(1039, 574)
-        self.setMinimumSize(QtCore.QSize(680, 10))
-        self.setMaximumSize(QtCore.QSize(5000, 5000))
+        self.setMinimumSize(QtCore.QSize(1039, 574))
+        self.setMaximumSize(QtCore.QSize(1039, 574))
         self.setContextMenuPolicy(QtCore.Qt.NoContextMenu)
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(":/logo/Logo.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -209,10 +209,10 @@ class AddBallWindow(QMainWindow):
         self.statusbar.setObjectName("statusbar")
         self.setStatusBar(self.statusbar)
 
-        self._resetDefaultUi()
+        self.__resetDefaultUi()
         QtCore.QMetaObject.connectSlotsByName(self)
 
-    def _resetDefaultUi(self):
+    def __resetDefaultUi(self):
         _translate = QtCore.QCoreApplication.translate
         self.lineEdit_spring_x.setText(_translate("AddBallWindow", "0.00"))
         self.lineEdit_endpoint_y.setText(_translate("AddBallWindow", "0.00"))
@@ -352,7 +352,7 @@ class AddBallWindow(QMainWindow):
         self.lineEdit_angle.setText(str(self.ball.angle * 180/math.pi))
         self.lineEdit_mass.setText(str(self.ball.mass))
 
-    def _colorChange(self):
+    def colorChange(self):
         # Set ColorPlate for choosing Color
         colorPlate = QtWidgets.QColorDialog.getColor()
         # Chang Color via choosing Color
@@ -366,7 +366,7 @@ class AddBallWindow(QMainWindow):
                                             "padding: 6px;".format(colorPlate.name()))
         self.color = "background-color: {0}".format(colorPlate.name()).split()[1]
 
-    def _passingdata(self):
+    def passingData(self):
 
         passkey = True
 
@@ -400,7 +400,7 @@ class AddBallWindow(QMainWindow):
             elif checkdigit[key] and key == 'Start position(Y)':
                 checkCondition[key] = True if float(self.lineEdit_origin_y.text()) >= 0 else False
             elif checkdigit[key] and key == 'Angle':
-                checkCondition[key] = True if 0 < float(self.lineEdit_angle.text()) <= 90 else False
+                checkCondition[key] = True if 0 <= float(self.lineEdit_angle.text()) <= 90 else False
             elif checkdigit[key] and key == 'Mass':
                 checkCondition[key] = True if float(self.lineEdit_mass.text()) > 0 else False
             elif checkdigit[key] and key == 'Gravitational Constant':
@@ -467,13 +467,13 @@ class AddBallWindow(QMainWindow):
             self.error_msgChooseEndPoint.showMessage(outputText + errortext)
 
     def okPress(self):
-        self._passingdata()
+        self.passingData()
         if self.allowToCreate:
             self.close()
 
     def calSpringK(self):
         try:
-            self._passingdata()
+            self.passingData()
             self.ball.goalX = float(self.lineEdit_endpoint_x.text())
             self.ball.goalY = float(self.lineEdit_endpoint_y.text())
             if self.ball.goalX-self.ball.positionX<=0:
@@ -499,7 +499,7 @@ class AddBallWindow(QMainWindow):
 
     def calEndpoint(self):
         try:
-            self._passingdata()
+            self.passingData()
             self.ball.calculation()
             self.lineEdit_endpoint_x.setText('{:.2f}'.format(self.ball.trajectory_x[self.ball.max_index]))
             self.lineEdit_endpoint_y.setText("0.00")

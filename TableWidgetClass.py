@@ -8,28 +8,14 @@ class TableA(QTableWidget):
 
     def __init__(self):
         super().__init__()
-        self._setUp()
+        self.__setUp()
         self.display = None
         self.rowBallBucket = RowBallBucket()
 
-    def _setUp(self):
+    def __setUp(self):
         self.setGeometry(QtCore.QRect(10, 740, 1000, 200))
         self.setStyleSheet("font: 14pt \"MS Shell Dlg 2\";"
                            "background-color: #6faed5;\n")
-        # self.setStyleSheet(" QTableView {\n"
-        #                     "font: 14pt \"MS Shell Dlg 2\";\n"
-        #                     "background-color: #6faed5;\n"
-        #                     "selection-background-color: qlineargradient(x1: 0, y1: 0, x2: 0.5, y2: 0.5,\n"
-        #                     "stop: 0 #121824, stop: 1 #344568);\n"
-        #                     "}\n"
-        #                     "\n"
-        #                     "QHeaderView::section {\n"
-        #                     "font: 14pt \"MS Shell Dlg 2\";\n"
-        #                     "background-color: #121824;\n"
-        #                     "color: #85e1d3 ;\n"
-        #                     "}\n"
-        #                     "\n"
-        #                     "")
         self.setLocale(QtCore.QLocale(QtCore.QLocale.English, QtCore.QLocale.UnitedStates))
         self.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOn)
         self.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
