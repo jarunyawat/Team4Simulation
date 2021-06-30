@@ -344,7 +344,7 @@ class AddBallWindow(QMainWindow):
                                       "QErrorMessage QTextEdit { background-color: #121824; color: #85e1d3 }"
                                        )
         
-       self.error_msgChooseEndPoint.setStyleSheet("QErrorMessage{\n"
+        self.error_msgChooseEndPoint.setStyleSheet("QErrorMessage{\n"
                                          "background-color: #121824;\n"
                                          "}\n"
                                        "QPushButton{\n"

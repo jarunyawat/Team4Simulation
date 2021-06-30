@@ -7,7 +7,6 @@ from TableWidgetClass import *
 from RowClass import *
 from SceneClass import *
 from PlotGraphClass import *
-from datagraphtable import *
 from savefile import *
 
 class Team4SIM(QMainWindow):
