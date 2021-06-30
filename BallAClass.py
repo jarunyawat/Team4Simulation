@@ -55,7 +55,7 @@ class BallA(QWidget):
         self.u_x = u*math.cos(self.angle)
         self.u_y = u*math.sin(self.angle)
         # compute time step
-        self.time_period = ((-(-200*self.u_y))+np.sqrt((-200*self.u_y)**2-4*981*200*self.positionY*-1))/(2*981)
+        self.time_period = ((-(-200*self.u_y))+np.sqrt((-200*self.u_y)**2-4*self.gConst*100*200*self.positionY*-1))/(2*self.gConst*100)
         self.time_step = np.arange(0, self.time_period+(1/self.fps), 1/self.fps)
         if len(self.time_step)==0:
             self.time_step.append(self.time_period)
